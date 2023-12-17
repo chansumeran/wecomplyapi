@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getFilteredStudents(String deptCode, String course, String yearLevel) {
+    public List<Student> getFilteredStudents(String deptCode, String course, Integer yearLevel) {
         return studentRepository.findByDynamicFilters(deptCode, course, yearLevel);
     }
 

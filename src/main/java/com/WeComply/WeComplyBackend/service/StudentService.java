@@ -10,7 +10,7 @@ public interface StudentService {
 
     Optional<Student> getStudentWithSanction(Integer studentId);
 
-    List<Student> getFilteredStudents(String deptCode, String course, String yearLevel);
+    List<Student> getFilteredStudents(String deptCode, String course, Integer yearLevel);
 
     List<Student> getAllStudents();
 //
