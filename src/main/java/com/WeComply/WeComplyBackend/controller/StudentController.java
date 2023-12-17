@@ -40,11 +40,11 @@ public class StudentController {
     }
 
     @GetMapping("/{studentID}")
-    public ResponseEntity<StudentResponse> getStudentWithSanction(@PathVariable("studentID") int studentID) {
+    public ResponseEntity<?> getStudentWithSanction(@PathVariable("studentID") int studentID) {
         Optional<Student> studentWithSanction = studentService.getStudentWithSanction(studentID);
 
         if (studentWithSanction.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("No student found.", HttpStatus.NOT_FOUND);
         }
 
         Student student = studentWithSanction.get();
