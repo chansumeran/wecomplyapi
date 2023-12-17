@@ -23,12 +23,14 @@ public class StudentController {
     private AttendanceServiceImpl attendanceService;
 
     // ADVANCED FILTER
-    @GetMapping("/advance_filter")
+    @GetMapping("/filter")
     public ResponseEntity<List<Student>> getAdvanceFilteredStudents(
             @RequestParam(name = "departmentCode", required = false) String deptCode,
             @RequestParam(name = "course", required = false) String course,
             @RequestParam(name = "yearLevel", required = false) Integer yearLevel) {
+
         List<Student> students = studentService.getFilteredStudents(deptCode, course, yearLevel);
+
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
