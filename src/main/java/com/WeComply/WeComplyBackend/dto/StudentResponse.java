@@ -13,6 +13,8 @@ public class StudentResponse {
 
     private String info;
 
-    private String sanction;
+    private Integer sanctionId;
+
+    private String sanctionDescription;
 
 }

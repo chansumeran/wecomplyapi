@@ -53,12 +53,12 @@ public class StudentController {
 
         String fullName = student.getFirstName() + " " + student.getLastName();
         String info = student.getDepartmentCode() + ", " + student.getCourse() + "-" + student.getYearLevel();
-        String sanction = student.getSanction().getDescription();
+        String sanctionDescription = student.getSanction().getDescription();
 
         StudentResponse studentResponse = new StudentResponse();
         studentResponse.setFullName(fullName);
         studentResponse.setInfo(info);
-        studentResponse.setSanction(sanction);
+        studentResponse.setSanctionDescription(sanctionDescription);
 
         return new ResponseEntity<>(studentResponse, HttpStatus.OK);
     }
