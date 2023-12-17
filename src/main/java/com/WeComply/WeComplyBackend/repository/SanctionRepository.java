@@ -1,4 +1,4 @@
-package com.WeComply.WeComplyBackend.service;
+package com.WeComply.WeComplyBackend.repository;
 
 import com.WeComply.WeComplyBackend.entity.Sanction;
 import org.springframework.data.jpa.repository.JpaRepository;
