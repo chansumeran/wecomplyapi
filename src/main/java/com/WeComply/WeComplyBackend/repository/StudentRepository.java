@@ -26,6 +26,20 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 
     // ADVANCED FILTER
+//    @Query(value = "SELECT s FROM student s " +
+//            "JOIN Department d ON s.dept_code = d.dept_code " +
+//            "WHERE (:departmentCode IS NULL OR d.dept_code = :departmentCode) " +
+//            "AND (:course IS NULL OR s.course = :course) " +
+//            "AND (:yearLevel IS NULL OR s.year_level = :yearLevel)", nativeQuery = true)
+//    @Query(value = "SELECT s.studentId, s.firstName, s.course, s.yearLevel, d.deptCode, e.eventName, a.attendanceDate " +
+//            "FROM Student s " +
+//            "LEFT JOIN s.attendance a " +
+//            "LEFT JOIN a.event e " +
+//            "RIGHT JOIN Department d " +
+//            "ON s.deptCode = d.deptCode " +
+//            "WHERE (:departmentCode IS NULL OR d.deptCode = :departmentCode OR :departmentCode = '') " +
+//            "AND (:course IS NULL OR s.course = :course OR :course = '') " +
+//            "AND (:yearLevel IS NULL OR s.yearLevel = :yearLevel)", nativeQuery = true)
     @Query(value = "SELECT s FROM student s " +
             "JOIN Department d ON s.dept_code = d.dept_code " +
             "WHERE (:departmentCode IS NULL OR d.dept_code = :departmentCode) " +

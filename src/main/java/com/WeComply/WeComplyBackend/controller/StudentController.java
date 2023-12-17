@@ -25,37 +25,12 @@ public class StudentController {
     // ADVANCED FILTER
     @GetMapping("/advance_filter")
     public ResponseEntity<List<Student>> getAdvanceFilteredStudents(
-            @RequestParam(name = "deptCode", required = false) String deptCode,
+            @RequestParam(name = "departmentCode", required = false) String deptCode,
             @RequestParam(name = "course", required = false) String course,
             @RequestParam(name = "yearLevel", required = false) Integer yearLevel) {
         List<Student> students = studentService.getFilteredStudents(deptCode, course, yearLevel);
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
-
-//    @GetMapping("/event_filter")
-//    public ResponseEntity<List<Student>> getEventFilteredStudents(
-//            @RequestParam(name = "eventName", required = false) String eventName,
-//            @RequestParam(name = "deptCode", required = false) String deptCode,
-//            @RequestParam(name = "course", required = false) String course,
-//            @RequestParam(name = "yearLevel", required = false) String yearLevel) {
-//
-//        List<Student> studentsByEvent = studentService.getStudentsByEvent(eventName);
-//
-//        return new ResponseEntity<>(studentsByEvent, HttpStatus.OK);
-//    }
-
-
-//    @GetMapping("/filter")
-//    public ResponseEntity<List<Student>> getFilteredStudents(
-//            @RequestParam(name = "eventName", required = false) String eventName,
-//            @RequestParam(name = "deptCode", required = false) String deptCode,
-//            @RequestParam(name = "course", required = false) String course,
-//            @RequestParam(name = "yearLevel", required = false) Integer yearLevel) {
-//
-//        List<Student> filteredStudents = studentService.getFilteredStudents(eventName, deptCode, course, yearLevel);
-//
-//        return new ResponseEntity<>(filteredStudents, HttpStatus.OK);
-//    }
 
     @GetMapping("/all")
     public ResponseEntity<List<Student>> getAllStudents() {
