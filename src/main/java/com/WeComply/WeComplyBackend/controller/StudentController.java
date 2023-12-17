@@ -27,7 +27,7 @@ public class StudentController {
     public ResponseEntity<List<Student>> getAdvanceFilteredStudents(
             @RequestParam(name = "deptCode", required = false) String deptCode,
             @RequestParam(name = "course", required = false) String course,
-            @RequestParam(name = "yearLevel", required = false) String yearLevel) {
+            @RequestParam(name = "yearLevel", required = false) Integer yearLevel) {
         List<Student> students = studentService.getFilteredStudents(deptCode, course, yearLevel);
         return new ResponseEntity<>(students, HttpStatus.OK);
     }

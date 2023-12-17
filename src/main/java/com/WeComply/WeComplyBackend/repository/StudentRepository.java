@@ -26,8 +26,12 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 
     // ADVANCED FILTER
-    @Query(value = "SELECT s.* FROM student s JOIN Department d ON s.dept_code = d.dept_code WHERE (:departmentCode IS NULL OR d.dept_code = :departmentCode) AND (:course IS NULL OR s.course = :course) AND (:yearLevel IS NULL OR s.year_level = :yearLevel)", nativeQuery = true)
-    List<Student> findByDynamicFilters(@Param("departmentCode") String deptCode, @Param("course") String course, @Param("yearLevel") String yearLevel);
+    @Query(value = "SELECT s FROM student s " +
+            "JOIN Department d ON s.dept_code = d.dept_code " +
+            "WHERE (:departmentCode IS NULL OR d.dept_code = :departmentCode) " +
+            "AND (:course IS NULL OR s.course = :course) " +
+            "AND (:yearLevel IS NULL OR s.year_level = :yearLevel)", nativeQuery = true)
+    List<Student> findByDynamicFilters(@Param("departmentCode") String deptCode, @Param("course") String course, @Param("yearLevel") Integer yearLevel);
 
 
 //    // FILTER BY EVENT
