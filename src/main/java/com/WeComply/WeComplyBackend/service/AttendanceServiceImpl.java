@@ -16,7 +16,7 @@ public class AttendanceServiceImpl implements AttendanceService {
     private final AttendanceRepository attendanceRepository;
 
     @Override
-    public List<Attendance> calculateTotalAbsences() {
+    public void calculateTotalAbsences() {
         List<Attendance> allAttendances = attendanceRepository.findAll();
 
         for (Attendance attendance : allAttendances) {
@@ -39,8 +39,6 @@ public class AttendanceServiceImpl implements AttendanceService {
             // Update the attendance in the database
             attendanceRepository.save(attendance);
         }
-
-        return allAttendances;
     }
 
     @Override

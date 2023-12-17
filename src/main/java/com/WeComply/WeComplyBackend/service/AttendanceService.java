@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AttendanceService {
 
-    List<Attendance> calculateTotalAbsences();
+    void calculateTotalAbsences();
 
     List<AttendanceResponse> getAttendanceSummary(Integer studentId);
 

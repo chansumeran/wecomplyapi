@@ -20,9 +20,8 @@ public class AttendanceController {
     private final AttendanceServiceImpl attendanceService;
 
     @GetMapping("/calculate-absences")
-    public ResponseEntity<List<Attendance>> calculateTotalAbsences() {
-        List<Attendance> updatedAttendances = attendanceService.calculateTotalAbsences();
-        return new ResponseEntity<>(updatedAttendances, HttpStatus.OK);
+    public void calculateTotalAbsences() {
+        attendanceService.calculateTotalAbsences();
     }
 
     @GetMapping("/summary/{studentId}")
