@@ -23,10 +23,10 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findById(studentId);
     }
 
-        @Override
-        public List<Student> getFilteredStudents(String deptCode, String course, String yearLevel, Integer eventId) {
-            return studentRepository.findByDynamicFilters(deptCode, course, yearLevel, eventId);
-        }
+    @Override
+    public List<Student> getFilteredStudents(String deptCode, String course, String yearLevel) {
+        return studentRepository.findByDynamicFilters(deptCode, course, yearLevel);
+    }
 
     @Override
     public List<Student> getAllStudents() {

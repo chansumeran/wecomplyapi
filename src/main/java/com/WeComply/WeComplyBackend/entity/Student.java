@@ -1,6 +1,5 @@
 package com.WeComply.WeComplyBackend.entity;
 
-import com.WeComply.WeComplyBackend.dto.StudentResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
