@@ -13,18 +13,28 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    @Override
-    public List<Student> getFilteredStudents(String deptCode, String course, String yearLevel) {
-        return studentRepository.findByDynamicFilters(deptCode, course, yearLevel);
-    }
+//    @Override
+//    public List<Student> getFilteredStudents(String eventName, String deptCode, String course, Integer yearLevel) {
+//        return studentRepository.findByDynamicFilters(eventName, deptCode, course, yearLevel);
+//    }
 
     @Override
-    public List<Student> getStudentsByEvent(String eventName) {
-        return studentRepository.findByEventFilter(eventName);
+    public Optional<Student> getStudentWithSanction(Integer studentId) {
+        return studentRepository.findById(studentId);
     }
 
+        @Override
+        public List<Student> getFilteredStudents(String deptCode, String course, String yearLevel, Integer eventId) {
+            return studentRepository.findByDynamicFilters(deptCode, course, yearLevel, eventId);
+        }
+
     @Override
-    public Optional<Student> getStudentWithSanction(int studentID) {
-        return studentRepository.findById(studentID);
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
     }
+//
+//    @Override
+//    public List<Student> getStudentsByEvent(String eventName) {
+//        return studentRepository.findByEventFilter(eventName);
+//    }
 }

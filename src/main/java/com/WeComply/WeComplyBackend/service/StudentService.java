@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface StudentService {
+//    List<Student> getFilteredStudents(String eventName, String deptCode, String course, Integer yearLevel);
 
-    List<Student> getFilteredStudents(String deptCode, String course, String yearLevel);
+    Optional<Student> getStudentWithSanction(Integer studentId);
 
-    List<Student> getStudentsByEvent(String eventName);
+    List<Student> getFilteredStudents(String deptCode, String course, String yearLevel, Integer eventId);
 
-    Optional<Student> getStudentWithSanction(int studentID);
+    List<Student> getAllStudents();
+//
+//    List<Student> getStudentsByEvent(String eventName);
 
 }
