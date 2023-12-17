@@ -42,12 +42,14 @@ public class StudentAttendanceController {
 
         String fullName = student.getFirstName() + " " + student.getLastName();
         String info = student.getDepartmentCode() + ", " + student.getCourse() + "-" + student.getYearLevel();
-        String sanction = student.getSanction().getDescription();
+        String sanctionDescription = student.getSanction().getDescription();
+        Integer sanctionId = student.getSanction().getSanctionId();
 
         StudentResponse studentResponse = new StudentResponse();
         studentResponse.setFullName(fullName);
         studentResponse.setInfo(info);
-        studentResponse.setSanction(sanction);
+        studentResponse.setSanctionDescription(sanctionDescription);
+        studentResponse.setSanctionId(sanctionId);
 
         // Retrieve attendance summary for the student
         List<AttendanceResponse> attendanceSummaryList = attendanceService.getAttendanceSummary(studentId);
