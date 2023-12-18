@@ -26,7 +26,13 @@ public class SanctionController {
     @PutMapping("/update-triggers")
     public void updateSanctionTrigger(
             @RequestBody List<SanctionUpdateRequest> updateRequests) {
+
         sanctionService.updateSanctionTriggers(updateRequests);
+    }
+
+    @PutMapping("/reset")
+    public void resetConfig() {
+        sanctionService.resetSanctionConfig();
     }
 
 }
