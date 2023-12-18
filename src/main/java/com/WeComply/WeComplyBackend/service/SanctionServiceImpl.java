@@ -7,8 +7,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -39,4 +39,21 @@ public class SanctionServiceImpl implements SanctionService {
             sanctionRepository.save(existingSanction);
         }
     }
+
+    @Override
+    public void resetSanctionConfig() {
+        resetSanctionValuesById(1, 1, "Low");
+        resetSanctionValuesById(2, 4, "Medium");
+        resetSanctionValuesById(3, 7, "High");
+    }
+
+    private void resetSanctionValuesById(int sanctionId, int trigger, String description) {
+        Optional<Sanction> optionalSanction = sanctionRepository.findBySanctionId(sanctionId);
+        optionalSanction.ifPresent(sanction -> {
+            sanction.setTriggerValue(trigger);
+            sanction.setDescription(description);
+            sanctionRepository.save(sanction);
+        });
+    }
+
 }
