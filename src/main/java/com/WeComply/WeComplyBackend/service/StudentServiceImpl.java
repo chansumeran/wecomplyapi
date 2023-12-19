@@ -36,30 +36,7 @@ public class StudentServiceImpl implements StudentService {
 
         List<Student> filteredStudents  = studentRepository.findByDynamicFilters(deptCode, course, yearLevel, eventCode);
 
-        List<GetAllStudentResponse> studentResponses = new ArrayList<>();
-
-        for (Student student : filteredStudents) {
-            // get info to be passed in the dto
-            Integer studentId = student.getStudentId();
-            String fullName = student.getFirstName() + " " + student.getLastName();
-            String department = student.getCourse().getDepartment().getDepartmentCode();
-            String studentCourse = student.getCourse().getCourseCode();
-            Integer studentYearLevel = student.getYearLevel();
-            Integer totalAbsences = calculateOverallAbsences(studentId);
-            Sanction sanction = assignSanction(totalAbsences);
-
-            GetAllStudentResponse studentResponse = new GetAllStudentResponse();
-            studentResponse.setStudentId(studentId);
-            studentResponse.setFullName(fullName);
-            studentResponse.setDepartment(department);
-            studentResponse.setCourse(studentCourse);
-            studentResponse.setYearLevel(studentYearLevel);
-            studentResponse.setTotalAbsences(totalAbsences);
-            studentResponse.setSanction(sanction);
-            studentResponses.add(studentResponse);
-        }
-
-        return studentResponses;
+        return filteredStudents.stream().map(this::mapToStudentResponsesDto).collect(Collectors.toList());
     }
 
     @Override
