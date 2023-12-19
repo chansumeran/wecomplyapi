@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FormattedStudentResponse {
+public class StudentResponse {
 
     private String fullName;
 
