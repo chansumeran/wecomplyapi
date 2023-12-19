@@ -25,17 +25,14 @@ public class StudentController {
             @RequestParam(name = "yearLevel", required = false) Integer yearLevel,
             @RequestParam(name = "eventCode", required = false) String eventCode) {
 
+        // check if all parameters are null, if yes, retrieve all the students
+        if (deptCode == null && course == null && yearLevel == null && eventCode == null) {
+            List<GetAllStudentResponse> allStudents = studentService.getAllStudents();
+            return new ResponseEntity<>(allStudents, HttpStatus.OK);
+        }
+
         List<GetAllStudentResponse> students = studentService.getFilteredStudents(deptCode, course, yearLevel, eventCode);
 
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
-
-
-    @GetMapping("/all")
-    public ResponseEntity<List<GetAllStudentResponse>> getAllStudents() {
-        List<GetAllStudentResponse> allStudents = studentService.getAllStudents();
-
-        return new ResponseEntity<>(allStudents, HttpStatus.OK);
-    }
-
 }
